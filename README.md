@@ -4,6 +4,8 @@ This tool generates "stickers" that you can print, cut, and put on top of your
 piano keys to help you play. It's useful for beginners, or for anyone who isn't
 a professional musician yet.
 
+Try it live: <https://denilsonsa.github.io/piano_keys_stickers/>
+
 ## Inspiration
 
 There are some sticker sets on the market, mostly manufactured from China.
