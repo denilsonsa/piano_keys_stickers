@@ -1,10 +1,14 @@
 import { computed, ref, reactive } from 'vue';
 import Note from './note.js';
+import StaffSvg from './staffsvg.js';
 
 
 export default {
+	components: {
+		StaffSvg,
+	},
 	setup(props, context) {
-		const clefs_style = ref('visible');
+		const clefs_visible = ref(true);
 		const min_note_code = ref(36);
 		const max_note_code = ref(84);
 		const dimensions = reactive({
@@ -42,7 +46,7 @@ export default {
 		});
 
 		return {
-			clefs_style,
+			clefs_visible,
 			min_note_code,
 			max_note_code,
 			dimensions,

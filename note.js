@@ -103,6 +103,128 @@ class Note {
 		};
 	}
 
+	// Constants for calculating the vertical note position.
+	get clef_offset() {
+		return {
+			'F': 12,
+			'C': 6,
+			'G': 0,
+		}
+	}
+	get note_position_in_g_clef() {
+		//         -O- A la  12
+		//             G sol 11
+		// .---------- F fa  10
+		// |           E mi   9
+		// |---------- D re   8
+		// |           C do   7
+		// |---------- B si   6
+		// |           A la   5
+		// |-G clef--- G sol  4
+		// |           F fa   3
+		// '---------- E mi   2
+		//             D re   1
+		//         -O- C do   0
+		return {
+			 0: -35,
+			 2: -34,  // 12 lines below
+			 4: -33,
+
+			 5: -32,  // 11 lines below
+			 7: -31,
+			 9: -30,  // 10 lines below
+			11: -29,
+
+			12: -28,  // 9 lines below
+			14: -27,
+			16: -26,  // 8 lines below
+
+			17: -25,
+			19: -24,  // 7 lines below
+			21: -23,
+			23: -22,  // 6 lines below
+
+			24: -21,
+			26: -20,  // 5 lines below
+			28: -19,
+
+			29: -18,  // 4 lines below
+			31: -17,
+			33: -16,  // 3 lines below
+			35: -15,
+
+			36: -14,  // 2 lines below
+			38: -13,
+			40: -12,  // 1 line below
+
+			41: -11,
+			43: -10,  // 1st line
+			45:  -9,
+			47:  -8,  // 2nd line
+                 
+			48:  -7,
+			50:  -6,  // 3rd line
+			52:  -5,
+                 
+			53:  -4,  // 4th line
+			55:  -3,
+			57:  -2,  // 5th line
+			59:  -1,  // Bass clef ends
+
+			60:   0,  // Middle C4
+			62:   1,  // Treble clef begins
+			64:   2,  // 1st line
+
+			65:   3,
+			67:   4,  // 2nd line
+			69:   5,
+			71:   6,  // 3rd line
+
+			72:   7,
+			74:   8,  // 4th line
+			76:   9,
+
+			77:  10,  // 5th line
+			79:  11,
+			81:  12,  // 1 line above
+			83:  13,
+
+			84:  14,  // 2 lines above
+			86:  15,
+			88:  16,  // 3 lines above
+
+			89:  17,
+			91:  18,  // 4 lines above
+			93:  19,
+			95:  20,  // 5 lines above
+
+			96:  21,
+			98:  22,  // 6 lines above
+			100: 23,
+
+			101: 24,  // 7 lines above
+			103: 25,
+			105: 26,  // 8 lines above
+			107: 27,
+
+			108: 28,  // 9 lines above
+			110: 29,
+			112: 30,  // 10 lines above
+
+			113: 31,
+			115: 32,  // 11 lines above
+			117: 33,
+			119: 34,  // 12 lines above
+
+			120: 35,
+			122: 36,  // 13 lines above
+			124: 37,
+
+			125: 38,  // 14 lines above
+			127: 39,
+		};
+	}
+
 	//////////////////////////////////////////////////
 	// Constructor
 
@@ -186,8 +308,20 @@ class Note {
 			return 'F';
 		} else {
 			// Middle C4 can be on either clef.
-			return this.middle_c_clef;
+			return this.middle_c_clef || 'G';
 		}
+	}
+	// Vertical note position, used for drawing the note in the staff.
+	// Depends on the clef.
+	note_position_in_clef(clef) {
+		const pos = this.note_position_in_g_clef[this.code];
+		if (pos === undefined) {
+			return undefined;
+		}
+		return pos + this.clef_offset[clef];
+	}
+	get note_position() {
+		return this.note_position_in_clef(this.staff_clef);
 	}
 	// SVG image for the clef corresponding to this note.
 	get staff_clef_img() {

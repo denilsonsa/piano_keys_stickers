@@ -50,13 +50,21 @@ html {
 }
 .whitenote .staff {
 	grid-area: staff;
+	position: relative;
+	/*
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	*/
 }
-.whitenote .staff > img {
-	flex: 0 0 auto;
-	width: 50%;
+.whitenote .staff > svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	max-height: 100%;
+	width: 100%;
 }
 .whitenote .code {
 	grid-area: code;
