@@ -1,6 +1,6 @@
 'use strict';
 
-const { ref, reactive } = Vue
+const { computed, ref, reactive } = Vue
 
 class Note {
 	// Inspired by these tables:
@@ -216,9 +216,22 @@ Vue.createApp({
 	setup() {
 		const min_note_code = ref(36);
 		const max_note_code = ref(84);
+		const dimensions = reactive({
+			width_white: 12,
+			width_black: 10.5,
+			height_white: 30,
+			height_black: 5,
+		});
 
 		return {
 			clefs_style: ref('visible'),
+			dimensions,
+			inline_styles: computed(() => ({
+				'--white-width': `${ dimensions.width_white }mm`,
+				'--black-width': `${ dimensions.width_black }mm`,
+				'--white-height': `${ dimensions.height_white }mm`,
+				'--black-height': `${ dimensions.height_black }mm`,
+			})),
 			min_note_code,
 			max_note_code,
 			note_conf: Note.reactive,

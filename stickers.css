@@ -8,32 +8,38 @@ html {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+	align-items: flex-start;
 }
 .strip > * {
 	flex: 0 0 auto;
 }
 
 .blacknote {
-	width: 1em;
-	background: gray;
+	width: var(--black-width);
+	height: var(--black-height);
+	box-sizing: border-box;
+	background: #AAA;
 }
 
 .whitenote > * {
-	outline: 1px dashed silver;
+	/* outline: 1px dashed silver; */
 }
 .whitenote {
-	vertical-align: top;
-	display: inline-grid;
+	width: var(--white-width);
+	height: var(--white-height);
+	box-sizing: border-box;
+	display: grid;
 	grid-template:
 		"flat  solfege sharp " 1fr
 		"staff staff   staff " 3fr
 		"code  letter  octave" 1fr
 		/ 1fr 2fr 1fr;
-	border: 1px silver outset;
+	border: 0.125mm #AAA solid;
+	border-top: 0;
 	background: linear-gradient(
 		var(--boomwhacker) 0.5em,
 		white 0.5em
-	);
+	) no-repeat top center;
 	padding: 0.5em 0 0 0;
 }
 .whitenote .flat {
@@ -54,9 +60,9 @@ html {
 }
 .whitenote .code {
 	grid-area: code;
-	color: gray;
+	color: #444;
 	font-family: monospace;
-	font-size: 0.75em;
+	font-size: 0.88em;
 }
 .whitenote .solfege {
 	grid-area: solfege;
@@ -74,15 +80,15 @@ html {
 
 .whitenote .accidental {
 	display: flex;
+	align-items: flex-start;
+	justify-content: center;
 }
 .whitenote .flat {
-	justify-content: flex-start;
 }
 .whitenote .sharp {
-	justify-content: flex-end;
 }
 .whitenote .accidental > img {
-	height: 0.87em
+	height: 1em;
 }
 
 .whitenote.C { --boomwhacker: #E31A47; }

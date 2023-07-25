@@ -14,9 +14,30 @@
 			<fieldset>
 				<legend>Layout settings</legend>
 				<div>
+					<span>White key width (mm):</span>
+					<input type="number" name="width_white" v-model="dimensions.width_white" min="1" max="99" step="0.1">
+				</div>
+				<div>
+					<span>Black key width (mm):</span>
+					<input type="number" name="width_black" v-model="dimensions.width_black" min="1" max="99" step="0.1">
+				</div>
+				<div>
+					<span>White key height (mm):</span>
+					<input type="number" name="height_white" v-model="dimensions.height_white" min="1" max="99" step="0.1">
+				</div>
+				<div>
+					<span>Black key height (mm):</span>
+					<input type="number" name="height_black" v-model="dimensions.height_black" min="1" max="99" step="0.1">
+				</div>
+				<div>
 					<span>Note range (MIDI values):</span>
 					<input type="number" name="min_code" v-model="min_note_code" min="0" max="127" step="1">
 					<input type="number" name="max_code" v-model="max_note_code" min="0" max="127" step="1">
+					<input type="button" value="25 keys" @click="min_note_code = 48; max_note_code = 72">
+					<input type="button" value="49 keys" @click="min_note_code = 36; max_note_code = 84">
+					<input type="button" value="61 keys" @click="min_note_code = 36; max_note_code = 96">
+					<input type="button" value="76 keys" @click="min_note_code = 28; max_note_code = 103">
+					<input type="button" value="88 keys" @click="min_note_code = 21; max_note_code = 108">
 				</div>
 			</fieldset>
 			<fieldset>
@@ -52,7 +73,7 @@
 			</fieldset>
 		</form>
 
-		<main>
+		<main :style="inline_styles">
 			<article class="strip">
 
 				<template v-for="note in note_iterator()" :key="note.code">
