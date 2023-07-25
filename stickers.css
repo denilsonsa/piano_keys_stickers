@@ -18,7 +18,9 @@ html {
 	width: var(--black-width);
 	height: var(--black-height);
 	box-sizing: border-box;
-	background: #AAA;
+	background: #CCC;
+	display: flex;
+	flex-direction: column;
 }
 
 .whitenote > * {
@@ -30,17 +32,18 @@ html {
 	box-sizing: border-box;
 	display: grid;
 	grid-template:
+		"freq freq freq" 1fr
+		"color color color" 1fr
 		"flat  solfege sharp " 1fr
 		"staff staff   staff " 3fr
 		"code  letter  octave" 1fr
-		/ 1fr 2fr 1fr;
+		/ 1fr 0.5fr 1fr 2fr 1fr;
 	border: 0.125mm #AAA solid;
 	border-top: 0;
-	background: linear-gradient(
-		var(--boomwhacker) 0.5em,
-		white 0.5em
-	) no-repeat top center;
-	padding: 0.5em 0 0 0;
+}
+.whitenote .color {
+	grid-area: color;
+	background-color: var(--boomwhacker);
 }
 .whitenote .flat {
 	grid-area: flat;
@@ -65,6 +68,17 @@ html {
 	bottom: 0;
 	max-height: 100%;
 	width: 100%;
+}
+.whitenote .frequency,
+.blacknote .frequency {
+	grid-area: freq;
+	font-family: "Roboto Condensed", monospace;
+	font-size: 0.75em;
+	text-align: right;
+}
+.whitenote .frequency .unit,
+.blacknote .frequency .unit {
+	font-size: 0.5em;
 }
 .whitenote .code {
 	grid-area: code;

@@ -22,6 +22,9 @@ class Note {
 	get middle_c_octave() {
 		return this.opts.middle_c_octave;
 	}
+	get frequency_a4() {
+		return this.opts.frequency_a4;
+	}
 	get solfege_names() {
 		const s = this.opts.solfege;
 		return [
@@ -111,11 +114,11 @@ class Note {
 			43: -10,  // 1st line
 			45:  -9,
 			47:  -8,  // 2nd line
-                 
+
 			48:  -7,
 			50:  -6,  // 3rd line
 			52:  -5,
-                 
+
 			53:  -4,  // 4th line
 			55:  -3,
 			57:  -2,  // 5th line
@@ -248,6 +251,31 @@ class Note {
 	// Returns the note name as a letter (English notation).
 	get letter() {
 		return this.letter_names[this.offset];
+	}
+	// Returns the frequency of this note in Hz.
+	get frequency() {
+		// https://en.wikipedia.org/wiki/Piano_key_frequencies
+		return (2 ** ((this.code - this.a4_code) / 12)) * this.frequency_a4;
+	}
+	// Returns a string, showing at most "n" digits.
+	frequency_digits(digits) {
+		const f = this.frequency;
+		// This is a stupid algorithm, but it works.
+		// And it naturally handles corner-cases about rounding.
+		let prev = f.toFixed(0);
+		for (let i = 0; i <= digits; i++) {
+			let s = f.toFixed(i);
+			let len = s.replace(/[,.]/, '').length;
+			if (len == digits) {
+				return s;
+			} else if (len > digits) {
+				return prev;
+			} else {
+				prev = s;
+			}
+		}
+		// The control should never arrive here.
+		return prev;
 	}
 	// Which clef best represents this note?
 	get staff_clef() {

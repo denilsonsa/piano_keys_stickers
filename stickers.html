@@ -116,6 +116,14 @@
 			<fieldset>
 				<legend>Visual tweaks (that you don't need to change)</legend>
 				<div>
+					<span>Frequency precision:</span>
+					<label><input type="radio" name="frequency_precision" :value="2" v-model="frequency_precision"> 2 digits</label>
+					<label><input type="radio" name="frequency_precision" :value="3" v-model="frequency_precision"> 3 digits</label>
+					<label><input type="radio" name="frequency_precision" :value="4" v-model="frequency_precision"> 4 digits</label>
+					<label><input type="radio" name="frequency_precision" :value="5" v-model="frequency_precision"> 5 digits</label>
+					<label><input type="radio" name="frequency_precision" :value="6" v-model="frequency_precision"> 6 digits</label>
+				</div>
+				<div>
 					<span>Clefs:</span>
 					<label><input type="radio" name="clefs_visible" :value="true" v-model="clefs_visible"> Visible</label>
 					<label><input type="radio" name="clefs_visible" :value="false" v-model="clefs_visible"> Hidden</label>
@@ -159,7 +167,10 @@
 						<span class="name letter">{{ note.letter }}</span>
 						<span class="octave">{{ note.octave }}</span>
 
+						<span class="frequency"><span class="number">{{ note.frequency_digits(frequency_precision) }}</span><span class="unit">Hz</span></span>
 						<span class="code">{{ note.code }}</span>
+
+						<span class="color"></span>
 
 						<span class="staff">
 							<template v-if="note.is_middle_c">
@@ -175,6 +186,7 @@
 					</div>
 
 					<div class="blacknote" v-else>
+						<span class="frequency"><span class="number">{{ note.frequency_digits(frequency_precision) }}</span><span class="unit">Hz</span></span>
 					</div>
 				</template>
 

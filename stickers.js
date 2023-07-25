@@ -8,6 +8,7 @@ export default {
 		StaffSvg,
 	},
 	setup(props, context) {
+		const frequency_precision = ref(4);
 		const clefs_visible = ref(true);
 		const min_note_code = ref(36);
 		const max_note_code = ref(84);
@@ -46,6 +47,7 @@ export default {
 		});
 
 		return {
+			frequency_precision,
 			clefs_visible,
 			min_note_code,
 			max_note_code,
