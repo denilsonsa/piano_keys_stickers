@@ -214,6 +214,8 @@ class Note {
 
 Vue.createApp({
 	setup() {
+		const black_notes_count = ref(0);
+		const white_notes_count = ref(0);
 		const min_note_code = ref(36);
 		const max_note_code = ref(84);
 		const dimensions = reactive({
@@ -232,12 +234,22 @@ Vue.createApp({
 				'--white-height': `${ dimensions.height_white }mm`,
 				'--black-height': `${ dimensions.height_black }mm`,
 			})),
+			black_notes_count,
+			white_notes_count,
 			min_note_code,
 			max_note_code,
 			note_conf: Note.reactive,
 			note_iterator: function*() {
+				black_notes_count.value = 0;
+				white_notes_count.value = 0;
+
 				let note = new Note(min_note_code.value);
 				while (note.code <= max_note_code.value) {
+					if (note.is_major) {
+						white_notes_count.value++;
+					} else {
+						black_notes_count.value++;
+					}
 					yield note;
 					note = note.next_semitone();
 					// note = note.next_major();
