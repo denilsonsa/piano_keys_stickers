@@ -27,6 +27,7 @@ html {
 	/* outline: 1px dashed silver; */
 }
 .whitenote {
+	--border-width: 0.125mm;
 	width: var(--white-width);
 	height: var(--white-height);
 	box-sizing: border-box;
@@ -38,8 +39,22 @@ html {
 		"staff staff   staff " 3fr
 		"code  letter  octave" 1fr
 		/ 1fr 0.5fr 1fr 2fr 1fr;
-	border: 0.125mm #AAA solid;
+	border: var(--border-width) #AAA solid;
 	border-top: 0;
+	border-bottom-right-radius: 1.5mm;
+	border-bottom-left-radius: 1.5mm;
+}
+.whitenote.C,
+.whitenote.F {
+	border-bottom-left-radius: 0;
+}
+.whitenote.B,
+.whitenote.E {
+	border-bottom-right-radius: 0;
+}
+.whitenote + .whitenote {
+	/* Note: this means these blocks have slightly more space for their content. */
+	border-left-width: 0;
 }
 .whitenote .color {
 	grid-area: color;
