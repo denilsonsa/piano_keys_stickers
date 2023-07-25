@@ -74,7 +74,8 @@ It also has the following dubious features (anti-features?):
 * Add more configuration options to let the user change the dimensions of each element (Solfège, color, staff, letters, frequency).
 * Let the user break the long strip into smaller printable sections (with extra keys to be overlapped while gluing together).
 * Prepare a print preview layout, something that looks like a piece of paper. Also needs support for multiple paper sizes.
+* Add a "Print!" button.
 * Add a ruler to help calibrating the print. This lets the user quickly check if the printed size matches a real-world ruler.
-* Add some instructions and photos of printing, cutting, putting some tape for extra strength, etc. Not only it instructs people on how to use the tool, but it also shows the end result.
+* Add some instructions and photos of printing, cutting, putting some tape for extra strength, etc. Not only it instructs people on how to use the tool, but it also shows the end result. Also add a screenshot of the tool to the README.
 * Use [Web MIDI](https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API) to detect the key range, and possibly highlight them live.
 * Improve the usability of the form. I literally spent zero effort in making it prettier, and it looks very ugly and scary.
