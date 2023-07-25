@@ -66,6 +66,7 @@ It also has the following dubious features (anti-features?):
 * Uses the browser to print, which means it suffers from all issues related to printing from the browser (e.g. are you sure it will be printed in the correct dimensions?)
 * Uses [millimeters](https://en.wikipedia.org/wiki/International_System_of_Units) for dimensions, without any option to change units
 * Uses [Vue.js 3 directly from CDN](https://vuejs.org/guide/quick-start.html#using-vue-from-cdn), no build steps required
+* Uses ES modules, which means [this tool doesn't work over `file://`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#other_differences_between_modules_and_standard_scripts), always requiring a basic webserver
 
 ## TODO
 
