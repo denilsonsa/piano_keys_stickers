@@ -3,127 +3,53 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Piano stickers</title>
+	<link rel="stylesheet" href="stickers.css">
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
 	<script src="stickers.js" defer></script>
-	<style>
-	html {
-		font-family: "Roboto", sans-serif;
-	}
-
-	.strip {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-	}
-	.strip > * {
-		flex: 0 0 auto;
-	}
-
-	.blacknote {
-		width: 1em;
-		background: gray;
-	}
-
-	.whitenote > * {
-		outline: 1px dashed silver;
-	}
-	.whitenote {
-		vertical-align: top;
-		display: inline-grid;
-		grid-template:
-		   "flat  solfege sharp " 1fr
-		   "staff staff   staff " 2fr
-		   "code  letter  octave" 1fr
-		   / 1fr 2fr 1fr;
-		border: 1px silver outset;
-		background: linear-gradient(
-			var(--boomwhacker) 10%,
-			white 20%,
-			white 80%,
-			var(--boomwhacker) 90%
-		);
-		padding: 0.5em 0.125em;
-	}
-	.whitenote .solfege {
-		grid-area: solfege;
-	}
-	.whitenote .flat {
-		grid-area: flat;
-	}
-	.whitenote .sharp {
-		grid-area: sharp;
-	}
-	.whitenote .staff {
-		grid-area: staff;
-		display: flex;
-	}
-	.whitenote .code {
-		grid-area: code;
-		color: gray;
-		font-family: monospace;
-		font-size: 0.75em;
-	}
-	.whitenote .letter {
-		grid-area: letter;
-	}
-	.whitenote .octave {
-		grid-area: octave;
-	}
-
-	.whitenote .accidental {
-		display: flex;
-	}
-	.whitenote .flat {
-		justify-content: flex-start;
-	}
-	.whitenote .sharp {
-		justify-content: flex-end;
-	}
-	.whitenote .accidental > img {
-		height: 0.87em
-	}
-
-	.whitenote.C { --boomwhacker: #E31A47; }
-	.whitenote.D { --boomwhacker: #F89C1C; }
-	.whitenote.E { --boomwhacker: #FFF229; }
-	.whitenote.F { --boomwhacker: #D4E05A; }
-	.whitenote.G { --boomwhacker: #009C95; }
-	.whitenote.A { --boomwhacker: #5D4FA1; }
-	.whitenote.B { --boomwhacker: #CE3895; }
-
-	</style>
 </head>
 <body>
 
 	<div id="app">
 		<form>
-			<div>
-				<span>Clef for middle C:</span>
-				<label><input type="radio" name="middle_c_clef" value="G" v-model="note_conf.middle_c_clef"> 𝄞</label>
-				<label><input type="radio" name="middle_c_clef" value="C" v-model="note_conf.middle_c_clef"> 𝄡</label>
-				<label><input type="radio" name="middle_c_clef" value="F" v-model="note_conf.middle_c_clef"> 𝄢</label>
-			</div>
-			<div>
-				<span>Octave number for middle C:</span>
-				<label><input type="radio" name="middle_c_octave" :value="3" v-model="note_conf.middle_c_octave"> 3</label>
-				<label><input type="radio" name="middle_c_octave" :value="4" v-model="note_conf.middle_c_octave"> 4</label>
-			</div>
-			<div>
-				<span>Solfège note names:</span>
-				<label><input type="radio" name="solfege_do" value="Do"  v-model="note_conf.solfege.do"> Do</label>
-				<label><input type="radio" name="solfege_do" value="Doh" v-model="note_conf.solfege.do"> Doh</label>
-				;
-				<label><input type="radio" name="solfege_sol" value="Sol" v-model="note_conf.solfege.sol"> Sol</label>
-				<label><input type="radio" name="solfege_sol" value="So"  v-model="note_conf.solfege.sol"> So</label>
-				;
-				<label><input type="radio" name="solfege_si" value="Si" v-model="note_conf.solfege.si"> Si</label>
-				<label><input type="radio" name="solfege_si" value="Ti" v-model="note_conf.solfege.si"> Ti</label>
-			</div>
-			<div>
-				<span>Note range (MIDI values):</span>
-				<input type="number" name="min_code" v-model="min_note_code" min="0" max="127" step="1">
-				<input type="number" name="max_code" v-model="max_note_code" min="0" max="127" step="1">
-			</div>
+			<fieldset>
+				<legend>Layout settings</legend>
+				<div>
+					<span>Note range (MIDI values):</span>
+					<input type="number" name="min_code" v-model="min_note_code" min="0" max="127" step="1">
+					<input type="number" name="max_code" v-model="max_note_code" min="0" max="127" step="1">
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Visual tweaks (that you don't need to change)</legend>
+				<div>
+					<span>Clefs:</span>
+					<label><input type="radio" name="clefs_style" value="visible" v-model="clefs_style"> Visible</label>
+					<label><input type="radio" name="clefs_style" value="hidden" v-model="clefs_style"> Hidden</label>
+					<label><input type="radio" name="clefs_style" value="hidden-double" v-model="clefs_style"> Hidden with double middle C</label>
+				</div>
+				<div>
+					<span>Clef for middle C:</span>
+					<label><input type="radio" name="middle_c_clef" value="G" v-model="note_conf.middle_c_clef"> 𝄞</label>
+					<label><input type="radio" name="middle_c_clef" value="C" v-model="note_conf.middle_c_clef"> 𝄡</label>
+					<label><input type="radio" name="middle_c_clef" value="F" v-model="note_conf.middle_c_clef"> 𝄢</label>
+				</div>
+				<div>
+					<span>Octave number for middle C:</span>
+					<label><input type="radio" name="middle_c_octave" :value="3" v-model="note_conf.middle_c_octave"> 3</label>
+					<label><input type="radio" name="middle_c_octave" :value="4" v-model="note_conf.middle_c_octave"> 4</label>
+				</div>
+				<div>
+					<span>Solfège note names:</span>
+					<label><input type="radio" name="solfege_do" value="Do"  v-model="note_conf.solfege.do"> Do</label>
+					<label><input type="radio" name="solfege_do" value="Doh" v-model="note_conf.solfege.do"> Doh</label>
+					;
+					<label><input type="radio" name="solfege_sol" value="Sol" v-model="note_conf.solfege.sol"> Sol</label>
+					<label><input type="radio" name="solfege_sol" value="So"  v-model="note_conf.solfege.sol"> So</label>
+					;
+					<label><input type="radio" name="solfege_si" value="Si" v-model="note_conf.solfege.si"> Si</label>
+					<label><input type="radio" name="solfege_si" value="Ti" v-model="note_conf.solfege.si"> Ti</label>
+				</div>
+			</fieldset>
 		</form>
 
 		<main>
@@ -135,13 +61,28 @@
 						<span class="accidental flat"><img src="Flat.svg" alt="flat symbol" v-if="note.left_is_flat"></span>
 						<span class="accidental sharp"><img src="Sharp.svg" alt="sharp symbol" v-if="note.right_is_sharp"></span>
 
-						<span class="solfege">{{ note.solfege }}</span>
-						<span class="letter">{{ note.letter }}</span>
+						<span class="name solfege">{{ note.solfege }}</span>
+						<span class="name letter">{{ note.letter }}</span>
 						<span class="octave">{{ note.octave }}</span>
 
 						<span class="code">{{ note.code }}</span>
 
-						<span class="staff"><img :src="note.staff_clef_img" :alt="`${note.staff_clef}-clef`" v-if="note.staff_note_img"><img :src="note.staff_note_img" alt="Note in the staff" v-if="note.staff_note_img"></span>
+						<span class="staff">
+							<template v-if="note.code === Note.middle_c_code">
+								<img :src="note.staff_clef_img" :alt="`${note.staff_clef}-clef`" v-if="note.staff_note_img && clefs_style === 'visible'">
+								<template v-if="clefs_style === 'hidden-double'">
+									<img :src="Note.note_images[note.code]['F']" alt="Note in the staff, F-clef">
+									<img :src="Note.note_images[note.code]['G']" alt="Note in the staff, G-clef">
+								</template>
+								<template v-else>
+									<img :src="note.staff_note_img" alt="Note in the staff, `${note.staff_clef}-clef" v-if="note.staff_note_img">
+								</template>
+							</template>
+							<template v-else>
+								<img :src="note.staff_clef_img" :alt="`${note.staff_clef}-clef`" v-if="note.staff_note_img && clefs_style === 'visible'">
+								<img :src="note.staff_note_img" alt="Note in the staff, `${note.staff_clef}-clef" v-if="note.staff_note_img">
+							</template>
+						</span>
 					</div>
 
 					<div class="blacknote" v-else>

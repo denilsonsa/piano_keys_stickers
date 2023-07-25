@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+html {
+	font-family: "Roboto", sans-serif;
+}
+
+.strip {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+.strip > * {
+	flex: 0 0 auto;
+}
+
+.blacknote {
+	width: 1em;
+	background: gray;
+}
+
+.whitenote > * {
+	outline: 1px dashed silver;
+}
+.whitenote {
+	vertical-align: top;
+	display: inline-grid;
+	grid-template:
+		"flat  solfege sharp " 1fr
+		"staff staff   staff " 3fr
+		"code  letter  octave" 1fr
+		/ 1fr 2fr 1fr;
+	border: 1px silver outset;
+	background: linear-gradient(
+		var(--boomwhacker) 0.5em,
+		white 0.5em
+	);
+	padding: 0.5em 0 0 0;
+}
+.whitenote .flat {
+	grid-area: flat;
+}
+.whitenote .sharp {
+	grid-area: sharp;
+}
+.whitenote .staff {
+	grid-area: staff;
+	display: flex;
+}
+.whitenote .staff > img {
+	flex: 1 1 1fr;
+}
+.whitenote .code {
+	grid-area: code;
+	color: gray;
+	font-family: monospace;
+	font-size: 0.75em;
+}
+.whitenote .solfege {
+	grid-area: solfege;
+}
+.whitenote .letter {
+	grid-area: letter;
+}
+.whitenote .octave {
+	grid-area: octave;
+}
+.whitenote .name {
+	text-align: center;
+	font-weight: bold;
+}
+
+.whitenote .accidental {
+	display: flex;
+}
+.whitenote .flat {
+	justify-content: flex-start;
+}
+.whitenote .sharp {
+	justify-content: flex-end;
+}
+.whitenote .accidental > img {
+	height: 0.87em
+}
+
+.whitenote.C { --boomwhacker: #E31A47; }
+.whitenote.D { --boomwhacker: #F89C1C; }
+.whitenote.E { --boomwhacker: #FFF229; }
+.whitenote.F { --boomwhacker: #D4E05A; }
+.whitenote.G { --boomwhacker: #009C95; }
+.whitenote.A { --boomwhacker: #5D4FA1; }
+.whitenote.B { --boomwhacker: #CE3895; }
+
+@media print {
+	form {
+		display: none;
+	}
+}

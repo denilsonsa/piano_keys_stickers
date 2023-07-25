@@ -22,6 +22,7 @@ class Note {
 
 	// Reactive values.
 	static reactive = reactive({
+		middle_c_code: 60,  // MIDI value for the middle C.
 		middle_c_clef: 'G',  // Can be either 'G' (treble), 'F' (bass), or 'C' (alto).
 		middle_c_octave: 4,  // Can be either 3 or 4.
 		solfege: {
@@ -34,9 +35,11 @@ class Note {
 			si: 'Si',
 		},
 	});
-	static middle_c = 60;
 
 	// Boilerplate getters.
+	static get middle_c_code() {
+		return Note.reactive.middle_c_code;
+	}
 	static get middle_c_clef() {
 		return Note.reactive.middle_c_clef;
 	}
@@ -64,10 +67,10 @@ class Note {
 	// https://commons.wikimedia.org/wiki/Category:Musical_score_components_(2)
 	// Their license is Public Domain
 	static note_images = {
-		35: 'Music_4b0.svg',
+		35: 'Music_4g0.svg',
 
 		36: 'Music_4a0.svg',  // 2 lines below
-		38: 'Music_4g0.svg',
+		38: 'Music_4b0.svg',
 		40: 'Music_4c1.svg',  // 1 line below
 
 		41: 'Music_4d1.svg',
@@ -142,9 +145,9 @@ class Note {
 	// Which clef best represents this note?
 	get staff_clef() {
 		// Comparing to C4
-		if (this.code > Note.middle_c) {
+		if (this.code > Note.middle_c_code) {
 			return 'G';
-		} else if (this.code < Note.middle_c) {
+		} else if (this.code < Note.middle_c_code) {
 			return 'F';
 		} else {
 			// Middle C4 can be on either clef.
@@ -157,7 +160,7 @@ class Note {
 	}
 	// SVG image for this note.
 	get staff_note_img() {
-		if (this.code === Note.middle_c) {
+		if (this.code === Note.middle_c_code) {
 			return Note.note_images[this.code][this.staff_clef];
 		} else {
 			return Note.note_images[this.code] || '';
@@ -215,6 +218,7 @@ Vue.createApp({
 		const max_note_code = ref(84);
 
 		return {
+			clefs_style: ref('visible'),
 			min_note_code,
 			max_note_code,
 			note_conf: Note.reactive,
@@ -226,6 +230,7 @@ Vue.createApp({
 					// note = note.next_major();
 				}
 			},
+			Note: Note,
 		}
 	}
 }).mount('#app')
