@@ -51,58 +51,6 @@ class Note {
 		return 69;  // MIDI value for A4, used as the reference note for tuning.
 	}
 
-	// These images come from:
-	// https://commons.wikimedia.org/wiki/Category:Musical_score_components_(2)
-	// Their license is Public Domain
-	get note_images() {
-		return {
-			35: 'Music_4g0.svg',
-
-			36: 'Music_4a0.svg',  // 2 lines below
-			38: 'Music_4b0.svg',
-			40: 'Music_4c1.svg',  // 1 line below
-
-			41: 'Music_4d1.svg',
-			43: 'Music_4e1.svg',  // 1st line
-			45: 'Music_4f1.svg',
-			47: 'Music_4g1.svg',  // 2nd line
-
-			48: 'Music_4a1.svg',
-			50: 'Music_4b1.svg',  // 3rd line
-			52: 'Music_4c2.svg',
-
-			53: 'Music_4d2.svg',  // 4th line
-			55: 'Music_4e2.svg',
-			57: 'Music_4f2.svg',  // 5th line
-			59: 'Music_4g2.svg',  // Bass clef ends
-
-			60: {
-				'F': 'Music_4a2.svg',
-				'C': 'Music_4b1.svg',
-				'G': 'Music_4c1.svg',
-			},  // Middle C4
-			62: 'Music_4d1.svg',  // Treble clef begins
-			64: 'Music_4e1.svg',  // 1st line
-
-			65: 'Music_4f1.svg',
-			67: 'Music_4g1.svg',  // 2nd line
-			69: 'Music_4a1.svg',
-			71: 'Music_4b1.svg',  // 3rd line
-
-			72: 'Music_4c2.svg',
-			74: 'Music_4d2.svg',  // 4th line
-			76: 'Music_4e2.svg',
-
-			77: 'Music_4f2.svg',  // 5th line
-			79: 'Music_4g2.svg',
-			81: 'Music_4a2.svg',  // 1 line above
-			83: 'Music_4b2.svg',
-
-			84: 'Music_4c3.svg',  // 2 lines above
-			86: 'Music_4d3.svg',
-		};
-	}
-
 	// Constants for calculating the vertical note position.
 	get clef_offset() {
 		return {
@@ -322,18 +270,6 @@ class Note {
 	}
 	get note_position() {
 		return this.note_position_in_clef(this.staff_clef);
-	}
-	// SVG image for the clef corresponding to this note.
-	get staff_clef_img() {
-		return `Music_Clef${this.staff_clef}.svg`;
-	}
-	// SVG image for this note.
-	get staff_note_img() {
-		if (this.is_middle_c) {
-			return this.note_images[this.code][this.staff_clef];
-		} else {
-			return this.note_images[this.code] || '';
-		}
 	}
 
 	// White or black piano key color?
