@@ -45,9 +45,12 @@ html {
 .whitenote .staff {
 	grid-area: staff;
 	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .whitenote .staff > img {
-	flex: 1 1 1fr;
+	flex: 0 0 auto;
+	width: 50%;
 }
 .whitenote .code {
 	grid-area: code;
