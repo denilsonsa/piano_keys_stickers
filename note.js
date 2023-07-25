@@ -54,9 +54,11 @@ class Note {
 	// Constants for calculating the vertical note position.
 	get clef_offset() {
 		return {
+			'F8': 19,
 			'F': 12,
 			'C': 6,
 			'G': 0,
+			'G8': -7,
 		}
 	}
 	get note_position_in_g_clef() {
@@ -249,19 +251,32 @@ class Note {
 	}
 	// Which clef best represents this note?
 	get staff_clef() {
-		// Comparing to C4
-		if (this.code > this.middle_c_code) {
-			return 'G';
-		} else if (this.code < this.middle_c_code) {
-			return 'F';
-		} else {
+		if (this.is_middle_c) {
 			// Middle C4 can be on either clef.
 			return this.middle_c_clef || 'G';
+		} else if (this.code >= 98) {
+			// So high that it's out of bounds.
+			return '';
+		} else if (this.code > 84) {
+			// https://www.dacapoalcoda.com/octaves-clefs
+			return 'G8';
+		} else if (this.code > this.middle_c_code) {
+			return 'G';
+		} else if (this.code < 24) {
+			// So low that it's out of bounds.
+			return '';
+		} else if (this.code < 36) {
+			return 'F8';
+		} else if (this.code < this.middle_c_code) {
+			return 'F';
 		}
 	}
 	// Vertical note position, used for drawing the note in the staff.
 	// Depends on the clef.
 	note_position_in_clef(clef) {
+		if (!clef) {
+			return undefined;
+		}
 		const pos = this.note_position_in_g_clef[this.code];
 		if (pos === undefined) {
 			return undefined;
