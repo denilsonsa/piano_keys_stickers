@@ -98,8 +98,8 @@ html {
 .whitenote .code {
 	grid-area: code;
 	color: #444;
-	font-family: monospace;
-	font-size: 0.88em;
+	font-family: "Roboto Condensed", monospace;
+	font-size: 0.66em;
 }
 .whitenote .solfege {
 	grid-area: solfege;

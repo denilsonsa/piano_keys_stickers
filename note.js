@@ -205,7 +205,7 @@ class Note {
 			// Extracting sane values from user-supplied opts.
 			// Also setting some default values in case they are not passed.
 			const {
-				middle_c_clef = 'G',  // Can be either 'G' (treble), 'F' (bass), or 'C' (alto).
+				middle_c_clef = '',  // Can be either 'G' (treble), 'F' (bass), or 'C' (alto).
 				middle_c_octave = 4,  // Can be either 3 or 4.
 				frequency_a4 = 440,  // Reference frequency in Hz.
 				solfege = {
