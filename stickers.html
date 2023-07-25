@@ -63,25 +63,25 @@
 				</div>
 				<div>
 					<span>Clef for middle C:</span>
-					<label><input type="radio" name="middle_c_clef" value="G" v-model="note_conf.middle_c_clef"> 𝄞</label>
-					<label><input type="radio" name="middle_c_clef" value="C" v-model="note_conf.middle_c_clef"> 𝄡</label>
-					<label><input type="radio" name="middle_c_clef" value="F" v-model="note_conf.middle_c_clef"> 𝄢</label>
+					<label><input type="radio" name="middle_c_clef" value="G" v-model="note_opts.middle_c_clef"> 𝄞</label>
+					<label><input type="radio" name="middle_c_clef" value="C" v-model="note_opts.middle_c_clef"> 𝄡</label>
+					<label><input type="radio" name="middle_c_clef" value="F" v-model="note_opts.middle_c_clef"> 𝄢</label>
 				</div>
 				<div>
 					<span>Octave number for middle C:</span>
-					<label><input type="radio" name="middle_c_octave" :value="3" v-model="note_conf.middle_c_octave"> 3</label>
-					<label><input type="radio" name="middle_c_octave" :value="4" v-model="note_conf.middle_c_octave"> 4</label>
+					<label><input type="radio" name="middle_c_octave" :value="3" v-model="note_opts.middle_c_octave"> 3</label>
+					<label><input type="radio" name="middle_c_octave" :value="4" v-model="note_opts.middle_c_octave"> 4</label>
 				</div>
 				<div>
 					<span>Solfège note names:</span>
-					<label><input type="radio" name="solfege_do" value="Do"  v-model="note_conf.solfege.do"> Do</label>
-					<label><input type="radio" name="solfege_do" value="Doh" v-model="note_conf.solfege.do"> Doh</label>
+					<label><input type="radio" name="solfege_do" value="Do"  v-model="note_opts.solfege.do"> Do</label>
+					<label><input type="radio" name="solfege_do" value="Doh" v-model="note_opts.solfege.do"> Doh</label>
 					;
-					<label><input type="radio" name="solfege_sol" value="Sol" v-model="note_conf.solfege.sol"> Sol</label>
-					<label><input type="radio" name="solfege_sol" value="So"  v-model="note_conf.solfege.sol"> So</label>
+					<label><input type="radio" name="solfege_sol" value="Sol" v-model="note_opts.solfege.sol"> Sol</label>
+					<label><input type="radio" name="solfege_sol" value="So"  v-model="note_opts.solfege.sol"> So</label>
 					;
-					<label><input type="radio" name="solfege_si" value="Si" v-model="note_conf.solfege.si"> Si</label>
-					<label><input type="radio" name="solfege_si" value="Ti" v-model="note_conf.solfege.si"> Ti</label>
+					<label><input type="radio" name="solfege_si" value="Si" v-model="note_opts.solfege.si"> Si</label>
+					<label><input type="radio" name="solfege_si" value="Ti" v-model="note_opts.solfege.si"> Ti</label>
 				</div>
 			</fieldset>
 		</form>
@@ -89,7 +89,7 @@
 		<main :style="inline_styles">
 			<article class="strip">
 
-				<template v-for="note in note_iterator()" :key="note.code">
+				<template v-for="note in all_notes" :key="note.code">
 
 					<div class="whitenote" :class="[ note.letter ]" v-if="note.is_major">
 						<span class="accidental flat"><img src="Flat.svg" alt="flat symbol" v-if="note.left_is_flat"></span>
@@ -102,7 +102,7 @@
 						<span class="code">{{ note.code }}</span>
 
 						<span class="staff">
-							<template v-if="note.code === Note.middle_c_code">
+							<template v-if="note.is_middle_c">
 								<img :src="note.staff_clef_img" :alt="`${note.staff_clef}-clef`" v-if="note.staff_note_img && clefs_style === 'visible'">
 								<template v-if="clefs_style === 'hidden-double'">
 									<img :src="Note.note_images[note.code]['F']" alt="Note in the staff, F-clef">
