@@ -163,9 +163,13 @@
 
 				<template v-for="note in all_notes" :key="note.code">
 
-					<div class="whitenote" :class="[ note.letter ]" v-if="note.is_major">
-						<span class="accidental flat"><img src="Flat.svg" alt="flat symbol" v-if="note.left_is_flat"></span>
-						<span class="accidental sharp"><img src="Sharp.svg" alt="sharp symbol" v-if="note.right_is_sharp"></span>
+					<div
+						class="whitenote"
+						:class="[ note.letter, { 'has_flat': note.left_is_flat, 'has_sharp': note.right_is_sharp } ]"
+						v-if="note.is_major"
+					>
+						<span class="accidental flat "><img src="Flat.svg"  alt="flat symbol" ></span>
+						<span class="accidental sharp"><img src="Sharp.svg" alt="sharp symbol"></span>
 
 						<span class="name solfege">{{ note.solfege }}</span>
 						<span class="name letter">{{ note.letter }}</span>

@@ -62,9 +62,19 @@ html {
 }
 .whitenote .flat {
 	grid-area: flat;
+	visibility: hidden;
+}
+.whitenote.has_flat .flat {
+	grid-area: flat;
+	visibility: visible;
 }
 .whitenote .sharp {
 	grid-area: sharp;
+	visibility: hidden;
+}
+.whitenote.has_sharp .sharp {
+	grid-area: sharp;
+	visibility: visible;
 }
 .whitenote .staff {
 	grid-area: staff;
