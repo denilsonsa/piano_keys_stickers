@@ -1,5 +1,7 @@
 # Piano keys stickers
 
+[Donation - buy me a coffee](https://denilson.sa.nom.br/donate.html)
+
 This tool generates "stickers" that you can print, cut, and put on top of your
 piano keys to help you play. It's useful for beginners, or for anyone who isn't
 a professional musician yet.
@@ -70,14 +72,37 @@ It also has the following dubious features (anti-features?):
 
 ## TODO
 
-* Revisit and improve the layout of the white keys. It's currently too messy and buggy.
-* Possibly rewrite the whole thing to generate one giant SVG file (instead of relying on HTML+CSS).
-* Add more configuration options to let the user change the dimensions of each element (Solfège, color, staff, letters, frequency).
-* Let the user break the long strip into smaller printable sections (with extra keys to be overlapped while gluing together).
-* Prepare a print preview layout, something that looks like a piece of paper. Also needs support for multiple paper sizes.
-* Add a toggle for "print test mode" that would print the layout in a ink-saving way. Good to test the size before printing the full stickers. All the contents of the sticker will be hidden (except for one key), and the black keys would be white. Optionally, multiple keys can be printed, but with different sizes (so the user can decide the best size).
-* Add a "Print!" button.
-* Add a ruler to help calibrating the print. This lets the user quickly check if the printed size matches a real-world ruler.
-* Add some instructions and photos of printing, cutting, putting some tape for extra strength, etc. Not only it instructs people on how to use the tool, but it also shows the end result. Also add a screenshot of the tool to the README.
-* Use [Web MIDI](https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API) to detect the key range, and possibly highlight them live.
-* Improve the usability of the form. I literally spent zero effort in making it prettier, and it looks very ugly and scary.
+Visual stuff/fluff:
+
+* [ ] Revisit and improve the layout of the white keys. It's currently too messy and buggy.
+    * To be done whenever I add more customization options (such as font sizes and families).
+* [x] Possibly rewrite the whole thing to generate one giant SVG file (instead of relying on HTML+CSS).
+    * Too much work for little benefit.
+* [ ] Add more configuration options to let the user change the dimensions of each element (Solfège, color, staff, letters, frequency).
+
+Print-related stuff:
+
+* [ ] Let the user break the long strip into smaller printable sections (with extra keys to be overlapped while gluing together).
+* [ ] Prepare a print preview layout, something that looks like a piece of paper. Also needs support for multiple paper sizes.
+* [ ] Add a toggle for "print test mode" that would print the layout in a ink-saving way. Good to test the size before printing the full stickers. All the contents of the sticker will be hidden (except for one key), and the black keys would be white. Optionally, multiple keys can be printed, but with different sizes (so the user can decide the best size).
+* [ ] Add a "Print!" button.
+* [ ] Add a ruler to help calibrating the print. This lets the user quickly check if the printed size matches a real-world ruler.
+
+Extra layer of polish:
+
+* [ ] Add some instructions and photos of printing, cutting, putting some tape for extra strength, etc. Not only it instructs people on how to use the tool, but it also shows the end result. Also add a screenshot of the tool to the README.
+* [ ] Add a favicon.
+* [ ] Use [Web MIDI](https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API) to detect the key range, and possibly highlight them live.
+* [ ] Improve the usability of the form. I literally spent zero effort in making it prettier, and it looks very ugly and scary.
+
+## License
+
+The code is licensed under a [very permissive](https://en.wikipedia.org/wiki/Permissive_software_license) [MIT license](LICENSE).
+
+The images are either Public Domain or Creative Commons, please check each image for details.
+
+## Pricing and donations
+
+This tool is provided for free for anyone to use. And it is also [free software](https://en.wikipedia.org/wiki/Free_software) (as in [freedom](https://en.wikipedia.org/wiki/The_Free_Software_Definition)).
+
+If you think this tool helped you, saved you time, or saved you money; feel free to send a [donation](https://denilson.sa.nom.br/donate.html). Let's say… maybe you were willing to buy some stickers of dubious quality from some website, but instead you decided to use this tool. Instead of spending the money on that website, you could send me a small donation. Or maybe you're a music shop and you've decided to print and sell the stickers generated from this tool. If you're earning money from this tool, it would be nice to donate a little bit to the author(s). Still, donations are voluntary, you don't have to donate if you don't want to.
