@@ -75,6 +75,7 @@ It also has the following dubious features (anti-features?):
 * Add more configuration options to let the user change the dimensions of each element (Solfège, color, staff, letters, frequency).
 * Let the user break the long strip into smaller printable sections (with extra keys to be overlapped while gluing together).
 * Prepare a print preview layout, something that looks like a piece of paper. Also needs support for multiple paper sizes.
+* Add a toggle for "print test mode" that would print the layout in a ink-saving way. Good to test the size before printing the full stickers. All the contents of the sticker will be hidden (except for one key), and the black keys would be white. Optionally, multiple keys can be printed, but with different sizes (so the user can decide the best size).
 * Add a "Print!" button.
 * Add a ruler to help calibrating the print. This lets the user quickly check if the printed size matches a real-world ruler.
 * Add some instructions and photos of printing, cutting, putting some tape for extra strength, etc. Not only it instructs people on how to use the tool, but it also shows the end result. Also add a screenshot of the tool to the README.
