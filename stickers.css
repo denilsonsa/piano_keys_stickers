@@ -34,11 +34,11 @@ html {
 	display: grid;
 	grid-template:
 		"freq freq freq" 1fr
-		"color color color" 1fr
+		"color color color" 0.5fr
 		"flat  solfege sharp " 1fr
 		"staff staff   staff " 3fr
 		"code  letter  octave" 1fr
-		/ 1fr 0.5fr 1fr 2fr 1fr;
+		/ 1fr 2fr 1fr;
 	border: var(--border-width) #AAA solid;
 	border-top: 0;
 	border-bottom-right-radius: 1.5mm;

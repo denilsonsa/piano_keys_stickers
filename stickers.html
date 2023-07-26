@@ -110,7 +110,7 @@
 					<input type="button" value="88 keys" @click="min_note_code = 21; max_note_code = 108">
 				</div>
 				<div>
-					{{ white_notes_count + black_notes_count }} keys ({{ white_notes_count }} white keys + {{ black_notes_count }} black keys), {{ white_notes_count * dimensions.width_white + black_notes_count * dimensions.width_black }}mm total.
+					{{ white_notes_count + black_notes_count }} keys ({{ white_notes_count }} white keys + {{ black_notes_count }} black keys), {{ (white_notes_count * dimensions.width_white + black_notes_count * dimensions.width_black).toFixed(1) }}mm total.
 				</div>
 			</fieldset>
 			<fieldset>
