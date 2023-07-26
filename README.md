@@ -101,7 +101,16 @@ Extra layer of polish:
 * [ ] Add some instructions and photos of printing, cutting, putting some tape for extra strength, etc. Not only it instructs people on how to use the tool, but it also shows the end result. Also add a screenshot of the tool to the README.
 * [ ] Add a favicon.
 * [ ] Use [Web MIDI](https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API) to detect the key range, and possibly highlight them live.
+* [ ] Add buttons to shift the whole strip one octave up or down (add/subtract 12 from both `min_note_code` and `max_note_code`). Useful for printing new guides for keyboards that can shift one octave up or down.
 * [ ] Improve the usability of the form. I literally spent zero effort in making it prettier, and it looks very ugly and scary.
+
+Extra music stuff:
+
+* [ ] Let the user pick one clef to be used for the whole strip. Treble, Bass, Alto, and even the other not-so-common clefs.
+* [ ] Let the user choose a key signature (extra ♭ or ♯ symbols after the clef), adapting the notes as needed.
+    * Good luck fitting the key signature in the very limited width. Maybe replace the middle C note with the wide signature.
+    * Have to figure out how to display the displaced notes. Maybe just add the ♮ natural symbol.
+    * Might require a lot of refactoring of `note.js` for deeper understanding of music.
 
 ## License
 
