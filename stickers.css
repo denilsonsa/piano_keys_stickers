@@ -6,11 +6,27 @@ html {
 
 .strip {
 	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+
+	--border-width: 0.125mm;
+	--border-style: var(--border-width) #AAA solid;
+}
+
+.folding-margin {
+	height: var(--black-height);
+	box-sizing: border-box;
+	border: var(--border-style);
+	border-bottom-style: dashed;
+}
+
+.keys-container {
+	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: flex-start;
 }
-.strip > * {
+.keys-container > * {
 	flex: 0 0 auto;
 }
 
@@ -27,7 +43,6 @@ html {
 	/* outline: 1px dashed silver; */
 }
 .whitenote {
-	--border-width: 0.125mm;
 	width: var(--white-width);
 	height: var(--white-height);
 	box-sizing: border-box;
@@ -39,7 +54,7 @@ html {
 		"staff staff   staff " 3fr
 		"code  letter  octave" 1fr
 		/ 1fr 2fr 1fr;
-	border: var(--border-width) #AAA solid;
+	border: var(--border-style);
 	border-top: 0;
 	border-bottom-right-radius: 1.5mm;
 	border-bottom-left-radius: 1.5mm;

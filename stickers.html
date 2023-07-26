@@ -160,44 +160,46 @@
 
 		<main :style="inline_styles">
 			<article class="strip">
+				<div class="folding-margin"></div>
+				<div class="keys-container">
 
-				<template v-for="note in all_notes" :key="note.code">
+					<template v-for="note in all_notes" :key="note.code">
 
-					<div
-						class="whitenote"
-						:class="[ note.letter, { 'has_flat': note.left_is_flat, 'has_sharp': note.right_is_sharp } ]"
-						v-if="note.is_major"
-					>
-						<span class="accidental flat "><img src="Flat.svg"  alt="flat symbol" ></span>
-						<span class="accidental sharp"><img src="Sharp.svg" alt="sharp symbol"></span>
+						<div
+							class="whitenote"
+							:class="[ note.letter, { 'has_flat': note.left_is_flat, 'has_sharp': note.right_is_sharp } ]"
+							v-if="note.is_major"
+						>
+							<span class="accidental flat "><img src="Flat.svg"  alt="flat symbol" ></span>
+							<span class="accidental sharp"><img src="Sharp.svg" alt="sharp symbol"></span>
 
-						<span class="name solfege">{{ note.solfege }}</span>
-						<span class="name letter">{{ note.letter }}</span>
-						<span class="octave">{{ note.octave }}</span>
+							<span class="name solfege">{{ note.solfege }}</span>
+							<span class="name letter">{{ note.letter }}</span>
+							<span class="octave">{{ note.octave }}</span>
 
-						<span class="frequency"><span class="number">{{ note.frequency_digits(frequency_precision) }}</span><span class="unit">Hz</span></span>
-						<span class="code">{{ note.code }}</span>
+							<span class="frequency"><span class="number">{{ note.frequency_digits(frequency_precision) }}</span><span class="unit">Hz</span></span>
+							<span class="code">{{ note.code }}</span>
 
-						<span class="color"></span>
+							<span class="color"></span>
 
-						<span class="staff">
-							<template v-if="note.is_middle_c">
-								<staff-svg
-									:clef="clefs_visible && note_opts.middle_c_clef ? note.staff_clef : null"
-									:notes="note_opts.middle_c_clef ? [ note.note_position ] : [ note.note_position_in_clef('F'), note.note_position_in_clef('G') ]"
-								></staff-svg>
-							</template>
-							<template v-else>
-								<staff-svg :clef="clefs_visible ? note.staff_clef : null" :notes="[ note.note_position ]" v-if="note.note_position !== undefined"></staff-svg>
-							</template>
-						</span>
-					</div>
+							<span class="staff">
+								<template v-if="note.is_middle_c">
+									<staff-svg
+										:clef="clefs_visible && note_opts.middle_c_clef ? note.staff_clef : null"
+										:notes="note_opts.middle_c_clef ? [ note.note_position ] : [ note.note_position_in_clef('F'), note.note_position_in_clef('G') ]"
+									></staff-svg>
+								</template>
+								<template v-else>
+									<staff-svg :clef="clefs_visible ? note.staff_clef : null" :notes="[ note.note_position ]" v-if="note.note_position !== undefined"></staff-svg>
+								</template>
+							</span>
+						</div>
 
-					<div class="blacknote" v-else>
-						<span class="frequency"><span class="number">{{ note.frequency_digits(frequency_precision) }}</span><span class="unit">Hz</span></span>
-					</div>
-				</template>
-
+						<div class="blacknote" v-else>
+							<span class="frequency"><span class="number">{{ note.frequency_digits(frequency_precision) }}</span><span class="unit">Hz</span></span>
+						</div>
+					</template>
+				</div>
 			</article>
 		</main>
 
