@@ -42,9 +42,17 @@ want.
       the base of the piano, but it can be more fragile.
     * Make sure the height of the white keys is short enough so the stickers
       won't get in the way.
-5. This is already good enough. Feel free to print.
-    * You may want to select the landscape paper orientation.
+5. This is already good enough. Feel free to **print**.
     * You may want to print on a thicker sheet of paper.
+    * You may want to select the landscape paper orientation.
+    * Please set "Scale = 100%" when printing, otherwise the dimensions will be
+      wrong.
+    * Please remember to enable colors and backgrounds while printing.
+6. Now grab some scissors and cut the paper.
+    * You can also fold the top part backwards (follow the dashed line).
+    * You can optionally put a long strip of transparent tape along the top of
+      the paper to prevent it from tearing.
+7. Place the finished product on top of your keyboard.
 
 There are more configuration options if you really want to tweak the look of
 your own stickers. They are self-explanatory, and you're free to explore.
