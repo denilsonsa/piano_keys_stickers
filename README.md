@@ -2,11 +2,16 @@
 
 [Donation - buy me a coffee](https://denilson.sa.nom.br/donate.html)
 
+**Try it live:** <https://denilsonsa.github.io/piano_keys_stickers/stickers.html>
+
 This tool generates "stickers" that you can print, cut, and put on top of your
 piano keys to help you play. It's useful for beginners, or for anyone who isn't
-a professional musician yet.
+a professional musician yet. These are also known as:
 
-Try it live: <https://denilsonsa.github.io/piano_keys_stickers/stickers.html>
+* Piano stickers, piano keyboard stickers
+* Removable piano stickers for keys
+* Digital printable piano keyboard stickers
+* Stave strip, staff strip
 
 ## Inspiration
 
@@ -87,6 +92,11 @@ Visual stuff/fluff:
 * [x] Possibly rewrite the whole thing to generate one giant SVG file (instead of relying on HTML+CSS).
     * Too much work for little benefit.
 * [ ] Add more configuration options to let the user change the dimensions of each element (Solfège, color, staff, letters, frequency).
+* [ ] Multiple and custom color palettes (e.g. Bontempi colors). Useful when following a songbook that uses a different color palette.
+* [ ] Let the color to be applied to the text and also to the SVG. With options to apply only to the note, or to the whole SVG.
+* [ ] Advanced options to fine-tune the dimensions used while generating the SVG. Useful when trying to fit to mini keys or to long keys.
+* [ ] Possibly show the clef in a different row than the note. Useful for tall but thin keys.
+* [ ] Let the user pick if they want the octave up/down clefs. Also, the symbol can be placed next to the note in case the clef is hidden.
 
 Print-related stuff:
 

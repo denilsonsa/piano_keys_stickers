@@ -13,10 +13,16 @@ export default {
 		const min_note_code = ref(36);
 		const max_note_code = ref(84);
 		const dimensions = reactive({
+			// Akai Mini Play
 			width_white: 12,
 			width_black: 10.5,
 			height_white: 30,
 			height_black: 5,
+			// Casio LK-247  (approximate sizes to be tested)
+			// width_white: 13.2,
+			// width_black: 14.3,
+			// height_white: 70,
+			// height_black: 5,
 		});
 		const temp_note = new Note(60);  // Just to fetch the default values for the options.
 		const note_opts = reactive({

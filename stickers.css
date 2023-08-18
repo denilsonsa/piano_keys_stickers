@@ -161,6 +161,25 @@ html {
 .whitenote.A { --boomwhacker: #5D4FA1; }
 .whitenote.B { --boomwhacker: #CE3895; }
 
+/*
+TODO: use the full chromatic scale:
+    #e21c48 // C       fg: white
+    #f26622 // C#/Db   fg: black
+    #f99d1c // D       fg: black
+    #ffcc33 // D#/Eb   fg: black
+    #fff32b // E       fg: black
+    #bcd85f // F       fg: black
+    #62bc47 // F#/Gb   fg: black
+    #009c95 // G       fg: black
+    #0071bb // G#/Ab   fg: white
+    #5e50a1 // A       fg: white
+    #8d5ba6 // A#/Bb   fg: white
+    #cf3e96 // B       fg: white (but possibly black)
+From: https://github.com/musescore/MuseScore/blob/master/share/plugins/colornotes/colornotes.qml
+
+TODO: also set their black/white complementary colors (for foreground text).
+*/
+
 @media print {
 	form {
 		display: none;
