@@ -12,6 +12,7 @@ a professional musician yet. These are also known as:
 * Removable piano stickers for keys
 * Digital printable piano keyboard stickers
 * Stave strip, staff strip
+* [Piano treble & bass clef staff note cutout chart](https://github.com/pianobooster/PianoBooster/blob/develop/doc/images/pianobooster-note-chart.pdf)
 
 ## Inspiration
 
