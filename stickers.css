@@ -181,6 +181,9 @@ TODO: also set their black/white complementary colors (for foreground text).
 */
 
 @media print {
+	.githubproject {
+		display: none;
+	}
 	form {
 		display: none;
 	}
